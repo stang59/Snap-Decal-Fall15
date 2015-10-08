@@ -932,6 +932,11 @@ SpriteMorph.prototype.initBlocks = function () {
             spec: '%n \u00D7 %n',
             alias: '*'
         },
+        reportSquare: {
+            type: 'reporter',
+            category: 'operators',
+            spec: '%n ^2',
+        },
         reportQuotient: {
             type: 'reporter',
             category: 'operators',
@@ -1295,10 +1300,11 @@ SpriteMorph.prototype.blockAlternatives = {
     reportMouseY: ['reportMouseX'],
 
     // operators:
-    reportSum: ['reportDifference', 'reportProduct', 'reportQuotient'],
-    reportDifference: ['reportSum', 'reportProduct', 'reportQuotient'],
-    reportProduct: ['reportDifference', 'reportSum', 'reportQuotient'],
-    reportQuotient: ['reportDifference', 'reportProduct', 'reportSum'],
+    reportSum: ['reportDifference', 'reportProduct', 'reportQuotient', 'reportSquare'],
+    reportDifference: ['reportSum', 'reportProduct', 'reportQuotient', 'reportSquare'],
+    reportProduct: ['reportDifference', 'reportSum', 'reportQuotient', 'reportSquare'],
+    reportQuotient: ['reportDifference', 'reportProduct', 'reportSum', 'reportSquare'],
+    reportSquare: ['reportDifference', 'reportProduct', 'reportQuotient', 'reportSum'],
     reportLessThan: ['reportEquals', 'reportGreaterThan'],
     reportEquals: ['reportLessThan', 'reportGreaterThan'],
     reportGreaterThan: ['reportEquals', 'reportLessThan'],
@@ -1979,6 +1985,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('reportSum'));
         blocks.push(block('reportDifference'));
         blocks.push(block('reportProduct'));
+        blocks.push(block('reportSquare'));
         blocks.push(block('reportQuotient'));
         blocks.push('-');
         blocks.push(block('reportModulus'));
@@ -5511,6 +5518,7 @@ StageMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('reportSum'));
         blocks.push(block('reportDifference'));
         blocks.push(block('reportProduct'));
+        blocks.push(block('reportSquare'));
         blocks.push(block('reportQuotient'));
         blocks.push('-');
         blocks.push(block('reportModulus'));
